@@ -6,8 +6,8 @@ const config = {
   IMG_PATH: process.env.IMG_PATH,
   AUDIO_PATH: process.env.AUDIO_PATH,
   HOST: process.env.SERVICE_URL,
-  businessType: 30404,  // 会议纪要 busst
-  appId: 37,
+  businessType: {#businessType#},  // 会议纪要 busst
+  appId: {#appId#},
 };
 
 

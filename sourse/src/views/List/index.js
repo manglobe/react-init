@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class List extends Component {
   render() {
     return (
       <div>
-        Hellow Home!
+        Hellow List!
       </div>
     );
   }
 }
 
-export default Home;
+export default List;

@@ -16,7 +16,7 @@ module.exports = {
       nobuild: true,
       nobackup: true,
       localPath: 'dev',
-      remotePath: '/app/vjftp/static/html/app/meeting',
+      remotePath: `/app/vjftp/static/html/app/${process.env.INDEX}`,
       postCommands: ['\\cp -rf ./* ../'],
       tag: 'v1'
     },

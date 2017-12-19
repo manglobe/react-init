@@ -1,0 +1,15 @@
+[{
+  "replace": {
+    "title": "meeting",
+    "TITLE": "会议纪要",
+    "appId": "37",
+    "businessType": "30404"
+  },
+  "settingPath": {
+    ".babelrc": "",
+    ".eslintrc": "",
+    ".eslintignore": "",
+    "package": "",
+    "README": ""
+  }
+}]

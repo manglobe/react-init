@@ -15,6 +15,9 @@ import 'STATIC/style/iconfont/iconfont.css';
 import { config, path, ajax } from './config/config';
 
 import Home from './views/Home';
+import List from './views/List';
+import Detail from './views/Detail';
+import Editor from './views/Editor';
 
 // const addOptlog = (id) => { // 埋点
 //   ajax.post(path.optLog, '', {
@@ -135,6 +138,18 @@ class App extends Component {
           <Route
             path="/home"
             component={Home}
+          />
+          <Route
+            path="/detail"
+            component={Detail}
+          />
+          <Route
+            path="/list"
+            component={List}
+          />
+          <Route
+            path="/Editor"
+            component={Editor}
           />
           <Redirect to="/home" />
         </Switch>

@@ -77,7 +77,7 @@ function runDevServer(host, port) {
     }
     if (isInteractive) {
       console.log(chalk.cyan('正在启动本地服务…'));
-      openBrowser(`http://${host}:${port}/app/${process.env.INDEX}`);
+      openBrowser(`http://${host}:${port}${process.env.ISAPP?'/app':''}/${process.env.INDEX}`);
     }
   });
 }

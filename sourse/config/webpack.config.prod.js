@@ -10,9 +10,11 @@ const WebpackMonitor = require('webpack-monitor');
 
 let filepath = glob.sync(path.resolve(__dirname, '../*.html'))[0];
 let files = filepath.split('/');
-let name = files[files.length - 2].split('-')[0];
+let name = files[files.length - 2].split('-')[0].toLowerCase();
+let projectType = files[files.length - 2].split('-')[1].toLowerCase();
 
 process.env.INDEX = name;
+process.env.ISAPP = (projectType === 'app');
 
 const newDate = new Date();
 const dateString = newDate.toLocaleString().replace(/\D/g, '');
