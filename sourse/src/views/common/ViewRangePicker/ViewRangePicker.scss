@@ -1,0 +1,31 @@
+.viewRangeBox{
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  .viewRange{
+    display: inline-block;
+    text-indent: 64px;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: right;
+    color: #333;
+  }
+}
+.placeholder{
+  font-size: 16px;
+  color: #bbb;
+  // color: #888;
+}
+
+.title{
+  font-size: 16px !important;
+  display: inline !important;
+  color: #666666;
+  // color: #888;
+  width: auto;
+  direction: rtl;
+  option {
+    direction: ltr;
+  }
+}

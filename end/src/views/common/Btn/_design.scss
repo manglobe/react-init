@@ -1,0 +1,42 @@
+//color config
+$colors:(
+  red:#ff0033,
+  blue:#398dee, 
+  green:#67ad03 ,
+  light:#999,
+  normal:#333,
+  tagNav:#eee,
+  tagActive:#fff,
+  navBorder:#eaeaea,
+);
+//按钮设置 Btn.js
+$btn:(
+  def:#666,
+  defBd:#eaeaea,
+  defBg:#fff,
+//--------------
+  suc:#fff,
+  sucBd:color(green),
+  sucBg:color(green),
+//----------------
+  rel:#fff,
+  relBd:#e18803 ,
+  relBg:#fd9802,
+// -------------
+  sav:#fe9802 ,
+  savBd:#dcdcdc ,
+  savBg:#fef5e7 ,
+);
+//tab组件
+$tab:(
+  def:color(normal),
+  defBd: #eaeaea,
+  defBg:#eee,
+  defBgActive:#fff,
+//--------------
+  details:#999,
+  detailsBd:#eaeaea,
+  detailsBg:#fff,
+  detailsActive:color(green),
+  detailsBgActive:color(green),
+) ;

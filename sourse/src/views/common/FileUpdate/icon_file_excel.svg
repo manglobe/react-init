@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>icon / file / excel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-/-file-/-excel">
+            <rect id="bg" fill="#5BCB8A" x="0" y="0" width="50" height="50" rx="4"></rect>
+            <polygon id="X" fill="#FFFFFF" points="15.9552023 36 14 36 23.3309249 25.1500359 14.8265896 14 19.2456647 14 25.6676301 22.4493898 32.916185 14 34.8872832 14 26.5736994 23.6654702 36 36 31.5650289 36 24.2369942 26.3661163"></polygon>
+        </g>
+    </g>
+</svg>

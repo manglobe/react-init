@@ -1,0 +1,26 @@
+.wrap{
+  width: 100%;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14px;
+  background: #fff;
+  line-height: 26px;
+  border: 1px solid #60A0F4;
+  display: flex;
+  color: #60A0F4;
+ }
+.item{
+  display: block;
+  flex:1;
+  text-align: center;
+  border-right: 0.5px solid #60A0F4;
+  border-radius: 0;
+  &:last-child{
+    border-right: none;
+  }
+  &.active{
+    background: #60A0F4;
+    color: #fff;
+  }
+}
