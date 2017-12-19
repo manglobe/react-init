@@ -1,27 +1,30 @@
+#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 // const index = require('./sourse/index.js');
 const repl = require('repl');
 const stat = fs.stat;
+
+let jsonPath = path.resolve(process.argv[1],'../../lib/init.json')
+let sourcePath = path.resolve(process.argv[1],'../../lib/sourse')
 let replaceObj, pathObj;
 
 console.log('请输入init.json路径（默认为"./init.json"）')
-// const r = repl.start({ prompt: '> ', eval: myEval, writer: val=>val.toUpperCase() });
+const r = repl.start({ prompt: '> ', eval: myEval, writer: val=>val.toUpperCase() });
 
-// function myEval(cmd, context, filename, callback) {
-//   cmd = cmd&&cmd.trim();
-//   if(cmd){
-//     init(cmd,start);
-//   }else{
-//     init('',start);
-//   }
-//   // callback(null, cmd);
-// }
-init('', start);
+function myEval(cmd, context, filename, callback) {
+  cmd = cmd&&cmd.trim();
+  if(cmd){
+    init(cmd,start);
+  }else{
+    init('',start);
+  }
+  // callback(null, cmd);
+}
 
 function init(src, callBack) {
   if (!src) {
-    return getInit('./init.json');
+    return getInit(jsonPath);
   }
   fs.open(src, 'wx', (err, fd) => {
     if (err) {
@@ -32,7 +35,7 @@ function init(src, callBack) {
       throw err;
     }
 
-    return getInit('./init.json');
+    return getInit(jsonPath);
   });
 
   function getInit(fd) {
@@ -50,8 +53,8 @@ function start(data, src) {
   pathObj = JSON.parse(data)[0].settingPath;
 
   exists(
-    './sourse',
-    '/',
+    sourcePath,
+    process.cwd(),
     src,
     copy,
   )
@@ -85,9 +88,6 @@ function pipeCopy(src, dst, input) {
     let midData = callBefore ? callBefore(data) : data
     fs.writeFile(dst, midData, {flag:'w+'},(errs) => {
       if (errs) {
-        console.log('=============errs==================');
-        console.log(errs);
-        console.log('====================================');
         throw errs
       };
     })
