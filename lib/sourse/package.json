@@ -22,6 +22,7 @@
     "@vj/rc-modal": "^0.1.0",
     "@vj/rc-scroll-top": "^0.0.3",
     "@vj/rmc-calendar": "^1.0.1",
+    "@vj/rmc-router": "^2.0.0",
     "@vj/rmc-view-range": "^1.1.1",
     "@vj/wx-sign": "^1.2.7",
     "antd-mobile": "^2.1.2",
