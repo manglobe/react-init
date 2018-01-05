@@ -7,6 +7,7 @@ const stat = fs.stat;
 
 let jsonPath = path.resolve(process.argv[1],'../../lib/init.json')
 let sourcePath = path.resolve(process.argv[1],'../../lib/sourse')
+let testPath = process.cwd()
 let replaceObj, pathObj;
 
 console.log('请输入init.json路径（默认为"./init.json"）')
@@ -52,37 +53,49 @@ function start(data, src) {
   replaceObj = JSON.parse(data)[0].replace;
   pathObj = JSON.parse(data)[0].settingPath;
 
-  exists(
+  access(
     sourcePath,
-    process.cwd(),
+    testPath,
     src,
     copy,
   )
+  console.log('over')
 }
 
 
 function pipeCopy(src, dst, input) {
-  fs.readFile(src, 'utf8', (err, data) => {
-    if (err) throw err;
-    if (pathObj[path.basename(src)]) {
-      fs.readFile(pathObj[path.basename(src)], 'utf8', (err, data2) => {
-        writeMyData(data2)
-      })
-    }
 
-    if (/(\.html|\.js|\.md|\.jsx)/.test(src)) {
-      writeMyData(data, function (params) {
-        let midP = params;
-        Object.keys(replaceObj).forEach(key => {
-          let reg = new RegExp(`{#${key}#}`, 'g')
-          midP = midP.replace(reg, replaceObj[key])
-        });
-        return midP
-      })
-    } else {
-      writeMyData(data)
-    }
-  });
+  if (/(\.html|\.js|\.md|\.jsx)/.test(src)) {
+    fs.readFile(src, 'utf8', (err, data) => {
+      if (err) throw err;
+      if (pathObj[path.basename(src)]) {
+        fs.readFile(pathObj[path.basename(src)], 'utf8', (err, data2) => {
+          writeMyData(data2)
+        })
+      } else {
+        writeMyData(data, function (params) {
+          let midP = params;
+          Object.keys(replaceObj).forEach(key => {
+            let reg = new RegExp(`{#${key}#}`, 'g')
+            midP = midP.replace(reg, replaceObj[key])
+          });
+          return midP;
+        })
+      }
+    })
+  }else {
+    fs.readFile(src, (err, data) => {
+      if (err) throw err;
+
+      if (pathObj[path.basename(src)]) {
+        fs.readFile(pathObj[path.basename(src)], (err, data2) => {
+          writeMyData(data2)
+        })
+      } else {
+        writeMyData(data)
+      }
+    })
+  };
 
   function writeMyData(data, callBefore) {
     let midData = callBefore ? callBefore(data) : data
@@ -112,22 +125,22 @@ function copy(src, dst, input) {
         if (st.isFile()) {
           pipeCopy(_src, _dst, input)
         } else if (st.isDirectory()) {
-          exists(_src, _dst, input, copy);
+          access(_src, _dst, input, copy);
         }
       });
     });
   });
 }
 
-function exists(src, dst, input, callback) {
+function access(src, dst, input, callback) {
   // 测试某个路径下文件是否存在
-  fs.exists(dst, function (exists) {
-    if (exists) { //不存在
-      callback(src, dst, input);
-    } else { //存在
+  fs.access(dst, function (err) {
+    if (err) { //不存在
       fs.mkdir(dst, function () { //创建目录
         callback(src, dst, input)
       })
+    } else { //存在
+      callback(src, dst, input);     
     }
   })
 

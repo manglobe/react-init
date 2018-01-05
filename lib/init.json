@@ -3,7 +3,8 @@
     "title": "meeting",
     "TITLE": "会议纪要",
     "appId": "37",
-    "businessType": "30404"
+    "businessType": "30404",
+    "isapp": true
   },
   "settingPath": {
     ".babelrc": "",

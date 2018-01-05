@@ -1,20 +1,9 @@
-.scrollWrap{
-  // min-height: calc(100vh - 83px);  
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  margin-top: -40px;
-  // padding-bottom: 44px;
-  z-index: 1;
-  padding-top: 40px;
-}
 
-.scrollBox{
+.scrollWrap{
   // height: calc(100vh - 83px);
-  height: 100%;
-  
-  overflow: auto;
+  height: calc(100vh - 40px);
   -webkit-overflow-scrolling: touch;
+  // overflow: scroll;
 }
 .list{
   &>div::before{
