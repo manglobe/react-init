@@ -5,12 +5,10 @@ const path = require('path');
 const repl = require('repl');
 const stat = fs.stat;
 
-let jsonPath = path.resolve(process.argv[1],'../../lib/init.json')
-let sourcePath = path.resolve(process.argv[1],'../../lib/sourse')
 let testPath = process.cwd()
 let replaceObj, pathObj;
 
-console.log('请输入init.json路径（默认为"./init.json"）')
+console.log('请输入资源路径（默认为"./"）')
 const r = repl.start({ prompt: '> ', eval: myEval, writer: val=>val.toUpperCase() });
 
 function myEval(cmd, context, filename, callback) {
@@ -24,18 +22,21 @@ function myEval(cmd, context, filename, callback) {
 }
 
 function init(src, callBack) {
+  let jsonPath = path.resolve(process.cwd(),src,'init.json')
+  let sourcePath = path.resolve(process.cwd(),src,'sourse')
+  console.log('====================================');
+  console.log(sourcePath);
+  console.log('====================================');
   if (!src) {
     return getInit(jsonPath);
   }
-  fs.open(src, 'wx', (err, fd) => {
+  fs.open(jsonPath, 'wx', (err, fd) => {
     if (err) {
       if (err.code === 'EEXIST') {
-        return getInit(src);
+        return getInit(jsonPath);
       }
-
       throw err;
     }
-
     return getInit(jsonPath);
   });
 
@@ -44,12 +45,12 @@ function init(src, callBack) {
       encoding: 'utf8'
     }, (err, data) => {
       if (err) throw err;
-      callBack(data, src)
+      callBack(data, jsonPath, sourcePath)
     })
   }
 }
 
-function start(data, src) {
+function start(data, src, sourcePath) {
   replaceObj = JSON.parse(data)[0].replace;
   pathObj = JSON.parse(data)[0].settingPath;
 
